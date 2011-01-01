@@ -7,11 +7,11 @@ package Template::AutoFilter;
 
     use Template::AutoFilter 'html';
     
-    my $templ = "[% test | none %][% test %][% test | html %][% test | upper %]";
+    my $templ = "[% test | none %]  [% test %]  [% test | html %]  [% test | upper %]";
     
     my $tt = Template->new;
     my $out;
-    $tt->process( \$templ, { test => '<a>  ' }, \$out );
+    $tt->process( \$templ, { test => '<a>' }, \$out );
     
     print $out; # <a>  &lt;a&gt;  &lt;a&gt;  <A>  
 
