@@ -6,10 +6,14 @@ package Template::AutoFilter;
 =head1 SYNOPSIS
 
     use Template::AutoFilter 'html';
-
+    
+    my $templ = "[% test | none %][% test %][% test | html %][% test | upper %]";
+    
     my $tt = Template->new;
-
-    # etc.
+    my $out;
+    $tt->process( \$templ, { test => '<a>  ' }, \$out );
+    
+    print $out; # <a>  &lt;a&gt;  &lt;a&gt;  <A>  
 
 =head1 DESCRIPTION
 
