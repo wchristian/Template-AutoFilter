@@ -3,6 +3,27 @@ use warnings;
 
 package Template::AutoFilter;
 
+=head1 SYNOPSIS
+
+    use Template::AutoFilter 'html';
+
+    my $tt = Template->new;
+
+    # etc.
+
+=head1 DESCRIPTION
+
+Template::AutoFilter loads Template and then modifies Template::Parser to add the
+filter defined in the first import parameter to every token encountered that does not
+have a filter yet.
+
+In order to allow exclusions it also adds a pass-through filter called 'none' to Template::Filters that just returns what it's given.
+
+WARNING: This module is not very nice and highly experimental. I have not done a lot
+of testing and things might blow up in unexpected ways. Use at your own risk.
+
+=cut
+
 use Template;
 use Template::Parser;
 use Template::Filters;
