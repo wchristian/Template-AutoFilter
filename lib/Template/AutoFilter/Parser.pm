@@ -20,10 +20,11 @@ sub split_text {
 
     for my $token ( @{$tokens} ) {
         next if !ref $token;
-        my $field_list = $token->[2];
-        next if grep { $field_list->[$_] eq 'FILTER' and !( $_ % 2 ) } 0..$#{$field_list};
 
-        push @{$field_list}, qw( FILTER | IDENT ), $self->{AUTO_FILTER};
+        my %fields = @{$token->[2]};
+        next if $fields{FILTER};
+
+        push @{$token->[2]}, qw( FILTER | IDENT ), $self->{AUTO_FILTER};
     }
 
     return $tokens;
