@@ -3,7 +3,7 @@ use warnings;
 
 package Template::AutoFilter::Parser;
 
-use parent 'Template::Parser';
+use base 'Template::Parser';
 
 sub new {
     my ( $class, $params ) = @_;

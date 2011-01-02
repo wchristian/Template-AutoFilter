@@ -3,7 +3,8 @@ use warnings;
 
 package Template::AutoFilter;
 
-use parent 'Template';
+use base 'Template';
+
 
 sub new {
     my $class = shift;
