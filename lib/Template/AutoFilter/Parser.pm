@@ -3,6 +3,18 @@ use warnings;
 
 package Template::AutoFilter::Parser;
 
+=head1 DESCRIPTION
+
+Sub-class of Template::Parser.
+
+Accepts an extra parameter in new() called AUTO_FILTER, which provides
+the name of a filter to be applied. Defaults to 'html'.
+
+Modifies token processing by adding the filter specified in AUTO_FILTER
+to all filter-less interpolation tokens.
+
+=cut
+
 use base 'Template::Parser';
 
 sub new {
