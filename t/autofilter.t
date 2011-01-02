@@ -9,7 +9,6 @@ use lib 'lib';
 use lib '../lib';
 
 use Template::AutoFilter;
-use Template::AutoFilter::Parser;
 
 my $templ = "unfiltered: [% test | none %] <a>
 filtered (html): [% test %] [% test | html %]

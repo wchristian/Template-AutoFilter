@@ -5,6 +5,8 @@ package Template::AutoFilter;
 
 use base 'Template';
 
+use lib '..';
+use Template::AutoFilter::Parser;
 
 sub new {
     my $class = shift;
