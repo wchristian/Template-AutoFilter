@@ -3,6 +3,8 @@ use warnings;
 
 package Template::AutoFilter;
 
+# ABSTRACT: Template::Toolkit with automatic filtering
+
 =head1 SYNOPSIS
 
     use Template::AutoFilter;
@@ -21,9 +23,10 @@ package Template::AutoFilter;
 
 =head1 DESCRIPTION
 
-Template::AutoFilter is a subclass of Template which loads a specific Parser
-is subclassed from Template::Parser and which adds a filter instruction to
-each interpolation token found in templates loaded by the TT engine.
+Template::AutoFilter is a subclass of Template::Toolkit which loads a
+specific Parser that is subclassed from Template::Parser and adds a
+filter instruction to each interpolation token found in templates
+loaded by the TT engine.
 
 By default this automatic filter is set to be 'html', but can be modified
 during object creation by passing the AUTO_FILTER option with the name

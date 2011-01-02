@@ -3,12 +3,20 @@ use warnings;
 
 package Template::AutoFilter::Parser;
 
+# ABSTRACT: parses TT templates and automatically adds filters to tokens
+
 =head1 DESCRIPTION
 
 Sub-class of Template::Parser.
 
-Accepts an extra parameter in new() called AUTO_FILTER, which provides
-the name of a filter to be applied. Defaults to 'html'.
+=head1 METHODS
+
+=head2 new
+
+Accepts an extra parameter called AUTO_FILTER, which provides
+the name of a filter to be applied. This parameter defaults to 'html'.
+
+=head2 split_text
 
 Modifies token processing by adding the filter specified in AUTO_FILTER
 to all filter-less interpolation tokens.
