@@ -41,6 +41,12 @@ sub tests {(
         tmpl => '[% test | upper %]',
         expect => '<A>',
     },
+    {
+        name => 'parameters make it possible to set the autofilter',
+        tmpl => '[% test %]',
+        expect => '<A>',
+        params => { AUTO_FILTER => 'upper' }
+    },
 )}
 
 sub run_tests {
