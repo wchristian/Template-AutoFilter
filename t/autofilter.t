@@ -8,15 +8,62 @@ package autofilter;
 use lib 'lib';
 use lib '../lib';
 
-use Template::AutoFilter;
+use Test::Most;
 
-my $templ = "unfiltered: [% test | none %] <a>
-filtered (html): [% test %] [% test | html %]
-filtered (upper): [% test | upper %]";
-
-my $tt = Template::AutoFilter->new;
-my $out;
-$tt->process( \$templ, { test => '<a>' }, \$out ) or die $tt->error();
-print $out;
+run_tests();
+done_testing;
 
 exit;
+
+sub tests {(
+    {
+        name => 'plain text remains unfiltered',
+        tmpl => '<a>',
+        expect => '<a>',
+    },
+    {
+        name => 'excluded tokens remain unfiltered',
+        tmpl => '[% test | none %]',
+        expect => '<a>',
+    },
+    {
+        name => 'unfiltered tokens get filtered',
+        tmpl => '[% test %]',
+        expect => '&lt;a&gt;',
+    },
+    {
+        name => 'specifically filtered tokens get filtered',
+        tmpl => '[% test | html %]',
+        expect => '&lt;a&gt;',
+    },
+    {
+        name => 'other filters are applied without the autofilter',
+        tmpl => '[% test | upper %]',
+        expect => '<A>',
+    },
+)}
+
+sub run_tests {
+    use_ok "Template::AutoFilter";
+
+    run_test($_) for tests();
+
+    return;
+}
+
+sub run_test {
+    my ( $test ) = @_;
+    $test->{params} ||= {};
+
+    my $tt = Template::AutoFilter->new( $test->{params} );
+    my $out;
+    my $res = $tt->process( \$test->{tmpl}, { test => '<a>' }, \$out );
+
+    subtest $test->{name} => sub {
+        cmp_deeply( [ $tt->error, $res ], [ '', 1 ], 'no template errors' );
+
+        is( $out, $test->{expect}, 'output is correct' );
+    };
+
+    return;
+}
