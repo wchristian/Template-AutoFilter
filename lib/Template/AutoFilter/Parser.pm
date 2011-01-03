@@ -21,6 +21,11 @@ the name of a filter to be applied. This parameter defaults to 'html'.
 Modifies token processing by adding the filter specified in AUTO_FILTER
 to all filter-less interpolation tokens.
 
+=head2 has_skip_field
+
+Checks the field list of a token to see if it contains directives that
+should be excluded from filtering.
+
 =cut
 
 use base 'Template::Parser';
@@ -42,12 +47,26 @@ sub split_text {
         next if !ref $token;
 
         my %fields = @{$token->[2]};
-        next if $fields{FILTER};
+        next if has_skip_field( \%fields );
 
         push @{$token->[2]}, qw( FILTER | IDENT ), $self->{AUTO_FILTER};
     }
 
     return $tokens;
+}
+
+sub has_skip_field {
+    my ( $fields ) = @_;
+
+    for my $field ( qw(
+        CALL SET DEFAULT INCLUDE PROCESS WRAPPER BLOCK IF UNLESS ELSIF ELSE
+        END SWITCH CASE FOREACH FOR WHILE FILTER USE MACRO TRY CATCH FINAL
+        THROW NEXT LAST RETURN STOP CLEAR META TAGS DEBUG
+    ) ) {
+        return 1 if $fields->{$field};
+    }
+
+    return 0;
 }
 
 1;

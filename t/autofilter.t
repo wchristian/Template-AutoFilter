@@ -51,6 +51,15 @@ sub tests {(
         expect => '<A>',
         params => { AUTO_FILTER => 'upper' }
     },
+    {
+        name => 'includes are not filtered',
+        tmpl => '[% test %] [% INCLUDE included.tt %]',
+        expect => "<A> test <html> <A>\n",
+        params => {
+            AUTO_FILTER => 'upper',
+            INCLUDE_PATH => 't',
+        },
+    },
 )}
 
 sub run_tests {
