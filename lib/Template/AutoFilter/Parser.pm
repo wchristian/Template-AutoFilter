@@ -26,9 +26,19 @@ to all filter-less interpolation tokens.
 Checks the field list of a token to see if it contains directives that
 should be excluded from filtering.
 
+=head2 skip_fields
+
+Provides a reference to a hash containing all directives to be excluded.
+
 =cut
 
 use base 'Template::Parser';
+
+my %skip_fields = (
+    CALL => 1, SET => 1, DEFAULT => 1, INCLUDE => 1, PROCESS => 1, WRAPPER => 1, BLOCK => 1, IF => 1, UNLESS => 1, ELSIF => 1, ELSE => 1,
+    END => 1, SWITCH => 1, CASE => 1, FOREACH => 1, FOR => 1, WHILE => 1, FILTER => 1, USE => 1, MACRO => 1, TRY => 1, CATCH => 1, FINAL => 1,
+    THROW => 1, NEXT => 1, LAST => 1, RETURN => 1, STOP => 1, CLEAR => 1, META => 1, TAGS => 1, DEBUG => 1,
+);
 
 sub new {
     my ( $class, $params ) = @_;
@@ -55,15 +65,15 @@ sub split_text {
     return $tokens;
 }
 
+sub skip_fields { \%skip_fields }
+
 sub has_skip_field {
     my ( $fields ) = @_;
 
-    for my $field ( qw(
-        CALL SET DEFAULT INCLUDE PROCESS WRAPPER BLOCK IF UNLESS ELSIF ELSE
-        END SWITCH CASE FOREACH FOR WHILE FILTER USE MACRO TRY CATCH FINAL
-        THROW NEXT LAST RETURN STOP CLEAR META TAGS DEBUG
-    ) ) {
-        return 1 if $fields->{$field};
+    my $skip_fields = skip_fields();
+
+    for my $field ( keys %{$fields} ) {
+        return 1 if $skip_fields->{$field};
     }
 
     return 0;
