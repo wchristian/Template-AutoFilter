@@ -2,6 +2,9 @@ Revision history for Perl module {{$dist->name}}
 
 {{$NEXT}}
 
+0.110050  2011-01-05 12:01:50 Europe/Berlin
+    - just a documentation improvement
+
 0.110032  2011-01-03 22:47:24 Europe/Berlin
     - slightly more efficient exclusion of directives in the parser
 
