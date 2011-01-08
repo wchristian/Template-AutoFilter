@@ -60,6 +60,16 @@ sub tests {(
             INCLUDE_PATH => 't',
         },
     },
+    {
+        name => 'SKIP_DIRECTIVES modifications are observed',
+        tmpl => '[% test %] [% INCLUDE included.tt %]',
+        expect => "<A> TEST <HTML> <A>\n",
+        params => {
+            AUTO_FILTER => 'upper',
+            INCLUDE_PATH => 't',
+            SKIP_DIRECTIVES => [],
+        },
+    },
 )}
 
 sub run_tests {

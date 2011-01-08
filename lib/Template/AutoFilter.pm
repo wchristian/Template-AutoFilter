@@ -36,6 +36,10 @@ of the wanted filter.
 Additionally a pass-through filter called 'none' is added to the object to
 allow exclusion of tokens from being filtered.
 
+Lastly, if you have problems with the directives which get auto filters
+applied, you can see the L<Template::AutoFilter::Parser> docs for how you
+can customize that.
+
 WARNING: This module is highly experimental. I have not done a lot of
 testing and things might blow up in unexpected ways. The API and behavior
 might change with any release (until 1.0). If you'd like to see any changes
@@ -50,6 +54,9 @@ Use at your own risk.
 
 Pre-processes the parameters passed on to Template's new(). Adds the
 pass-through filter and creates the AutoFilter Parser.
+
+All parameters passed to this new() will also be passed to the parser's
+new().
 
 =cut
 
