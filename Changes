@@ -2,6 +2,9 @@ Revision history for Perl module {{$dist->name}}
 
 {{$NEXT}}
 
+0.111980  2011-07-17 16:07:35 Europe/Berlin
+    - nested fields do not cause warnings anymore
+
 0.110080  2011-01-08 12:09:13 Europe/Berlin
     - added an option to customize the directives to be skipped
 
