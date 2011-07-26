@@ -2,6 +2,9 @@ Revision history for Perl module {{$dist->name}}
 
 {{$NEXT}}
 
+0.112070  2011-07-26 21:53:24 Europe/Berlin
+	- switched test IDE adaption to Test::InDistDir
+
 0.111980  2011-07-17 16:07:35 Europe/Berlin
     - nested fields do not cause warnings anymore
 
