@@ -5,13 +5,7 @@ use warnings;
 
 package autofilter;
 
-BEGIN {
-    chdir '..' if -d '../t';
-}
-
-use lib 'lib';
-use lib '../lib';
-
+use Test::InDistDir;
 use Test::Most;
 
 run_tests();
