@@ -3,6 +3,7 @@ use warnings;
 
 package Template::AutoFilter;
 
+# VERSION
 # ABSTRACT: Template::Toolkit with automatic filtering
 
 =head1 SYNOPSIS

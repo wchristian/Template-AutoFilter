@@ -3,6 +3,7 @@ use warnings;
 
 package Template::AutoFilter::Parser;
 
+# VERSION
 # ABSTRACT: parses TT templates and automatically adds filters to tokens
 
 =head1 DESCRIPTION
