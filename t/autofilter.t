@@ -6,6 +6,7 @@ use warnings;
 package autofilter;
 
 use Test::InDistDir;
+use Test::More 0.96 ();
 use Test::Most;
 
 run_tests();
