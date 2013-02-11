@@ -4,7 +4,7 @@ Template::AutoFilter - Template::Toolkit with automatic filtering
 
 # VERSION
 
-version 0.112350
+version 0.130420
 
 # SYNOPSIS
 
@@ -31,7 +31,7 @@ loaded by the TT engine. Tokens that already have a filter instruction
 are left unchanged.
 
 By default this automatic filter is set to be 'html', but can be modified
-during object creation by passing the AUTO_FILTER option with the name
+during object creation by passing the AUTO\_FILTER option with the name
 of the wanted filter.
 
 Additionally a pass-through filter called 'none' is added to the object to
@@ -63,9 +63,9 @@ new().
 
 ## Bugs / Feature Requests
 
-Please report any bugs or feature requests by email to `bug-template-autofilter at rt.cpan.org`, or through
-the web interface at [http://rt.cpan.org/Public/Dist/Display.html?Name=Template-AutoFilter](http://rt.cpan.org/Public/Dist/Display.html?Name=Template-AutoFilter). You will be automatically notified of any
-progress on the request by the system.
+Please report any bugs or feature requests through the issue tracker
+at [http://rt.cpan.org/Public/Dist/Display.html?Name=Template-AutoFilter](http://rt.cpan.org/Public/Dist/Display.html?Name=Template-AutoFilter).
+You will be notified automatically of any progress on your issue.
 
 ## Source Code
 
@@ -74,7 +74,7 @@ public review and contribution under the terms of the license.
 
 [https://github.com/wchristian/Template-AutoFilter](https://github.com/wchristian/Template-AutoFilter)
 
-  git clone https://github.com/wchristian/Template-AutoFilter.git
+    git clone https://github.com/wchristian/Template-AutoFilter.git
 
 # AUTHOR
 
@@ -86,4 +86,4 @@ This software is Copyright (c) 2011 by Christian Walde.
 
 This is free software, licensed under:
 
-  DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE, Version 2, December 2004
+    DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE, Version 2, December 2004
