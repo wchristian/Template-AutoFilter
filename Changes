@@ -1,6 +1,7 @@
 Revision history for Perl module {{$dist->name}}
 
 {{$NEXT}}
+    - PERL/RAWPERL blocks are not autofiltered anymore
 
 0.112350  2011-08-23 15:48:51 Europe/Berlin
     - blocks with implicit assignments are not autofiltered anymore

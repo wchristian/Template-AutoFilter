@@ -102,7 +102,7 @@ sub default_skip_directives {
     my @skip_directives = qw(
         CALL SET DEFAULT INCLUDE PROCESS WRAPPER BLOCK IF UNLESS ELSIF ELSE
         END SWITCH CASE FOREACH FOR WHILE FILTER USE MACRO TRY CATCH FINAL
-        THROW NEXT LAST RETURN STOP CLEAR META TAGS DEBUG ASSIGN
+        THROW NEXT LAST RETURN STOP CLEAR META TAGS DEBUG ASSIGN PERL RAWPERL
     );
     return $self->make_skip_directives( \@skip_directives );
 }
