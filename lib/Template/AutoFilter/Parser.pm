@@ -78,6 +78,7 @@ sub split_text {
 
         my %fields = grep { !ref } @{$token->[2]}; # filter out nested fields, they don't matter for our decision of whether there is a filter already
         next if $self->has_skip_field( \%fields );
+        next if ! %fields;
 
         push @{$token->[2]}, qw( FILTER | IDENT ), $self->{AUTO_FILTER};
     }

@@ -65,6 +65,21 @@ sub tests {(
             SKIP_DIRECTIVES => [],
         },
     },
+    {
+        name => '[%# comments are parsed correctly',
+        tmpl => 'pre[%# This is a comment -%]post',
+        expect => 'prepost',
+    },
+    {
+        name => '[% # comments are parsed correctly',
+        tmpl => 'pre[% # This is a comment -%]post',
+        expect => 'prepost',
+    },
+    {
+        name => 'empty tokens are parsed correctly',
+        tmpl => 'pre[% -%]post',
+        expect => 'prepost',
+    },
 )}
 
 sub run_tests {
