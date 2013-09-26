@@ -4,7 +4,7 @@ Template::AutoFilter - Template::Toolkit with automatic filtering
 
 # VERSION
 
-version 0.130420
+version 0.132690
 
 # SYNOPSIS
 
@@ -58,6 +58,10 @@ pass-through filter and creates the AutoFilter Parser.
 
 All parameters passed to this new() will also be passed to the parser's
 new().
+
+# CONTRIBUTORS
+
+Ryan Olson (cpan:GIMPSON) <ryan@ziprecruiter.com>
 
 # SUPPORT
 
