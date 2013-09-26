@@ -59,6 +59,10 @@ pass-through filter and creates the AutoFilter Parser.
 All parameters passed to this new() will also be passed to the parser's
 new().
 
+=head1 CONTRIBUTORS
+
+Ryan Olson (cpan:GIMPSON) <ryan@ziprecruiter.com>
+
 =cut
 
 use base 'Template';
