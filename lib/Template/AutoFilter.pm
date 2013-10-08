@@ -74,11 +74,16 @@ sub new {
     my $class = shift;
 
     my $params = defined($_[0]) && ref($_[0]) eq 'HASH' ? shift : {@_};
-    $params->{FILTERS}{none} ||= sub { $_[0] };
 
     $params->{PARSER} ||= Template::AutoFilter::Parser->new( $params );
 
-    return $class->SUPER::new( $params );
+    my $self = $class->SUPER::new( $params );
+
+    if ( ! $self->context->filter('none') ) {
+      $self->context->define_filter('none',sub { $_[0] });
+    }
+
+    return $self;
 }
 
 1;
