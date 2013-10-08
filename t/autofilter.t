@@ -9,6 +9,8 @@ use Test::InDistDir;
 use Test::More 0.96 ();
 use Test::Most;
 
+use Template::Filters;
+
 run_tests();
 done_testing;
 
@@ -80,6 +82,16 @@ sub tests {(
         tmpl => 'pre[% -%]post',
         expect => 'prepost',
     },
+    {
+        name => 'none included with sent filters',
+        tmpl => '[% test | none %][% test | passed %]',
+        expect => '<a>passed<a>passed',
+        params => {
+          LOAD_FILTERS => Template::Filters->new(
+                              { FILTERS => { passed => sub { "passed$_[0]passed" } } }
+                          ),
+        },
+    }
 )}
 
 sub run_tests {
