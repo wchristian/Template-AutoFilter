@@ -75,6 +75,7 @@ sub split_text {
 
     for my $token ( @{$tokens} ) {
         next if !ref $token;
+        next if !ref $token->[2];   # Skip ITEXT (<foo>$bar</foo>)
 
         my %fields = grep { !ref } @{$token->[2]}; # filter out nested fields, they don't matter for our decision of whether there is a filter already
         next if $self->has_skip_field( \%fields );

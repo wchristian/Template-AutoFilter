@@ -80,6 +80,14 @@ sub tests {(
         tmpl => 'pre[% -%]post',
         expect => 'prepost',
     },
+    {
+        name    => "INTERPOLATE => 1 doesn't cause runtime errors (but isn't supported)",
+        tmpl    => 'pre $test post',
+        expect  => 'pre <a> post',
+        params  => {
+            INTERPOLATE => 1,
+        },
+    }
 )}
 
 sub run_tests {
