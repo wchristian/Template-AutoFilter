@@ -58,6 +58,7 @@ Prebuilds a hash of directives to be skipped while applying auto filters.
 =cut
 
 use base 'Template::Parser';
+use List::MoreUtils qw< part >;
 
 sub new {
     my ( $class, $params ) = @_;
@@ -77,13 +78,33 @@ sub split_text {
         next if !ref $token;
         next if !ref $token->[2];   # Skip ITEXT (<foo>$bar</foo>)
 
-        my %fields = grep { !ref } @{$token->[2]}; # filter out nested fields, they don't matter for our decision of whether there is a filter already
-        next if $self->has_skip_field( \%fields );
-        next if ! %fields;
+        # Split a compound statement into individual directives
+        my ($part, $is_directive) = (0, 1);
+        my @directives = part {
+            # Skip over interpolated fields; they are unpaired
+            unless (ref) {
+                $part++ if $is_directive and $_ eq ';';
+                $is_directive = !$is_directive;
+            }
+            $part;
+        } @{$token->[2]};
 
-        push @{$token->[2]}, qw( FILTER | IDENT ), $self->{AUTO_FILTER};
+        for my $directive (@directives) {
+            # Filter out interpolated values in strings; they don't matter for
+            # our decision of whether to autofilter or not (e.g. an existing
+            # filter).  Note, this is not the same as ITEXT.  Also ignore
+            # semi-colon tokens, as they may make an empty directive look
+            # non-empty.  They are also inconsequential to our decision to
+            # autofilter or not.
+            my %fields = grep { !ref and $_ ne ';' } @$directive;
+            next if $self->has_skip_field( \%fields );
+            next if ! %fields;
+
+            push @$directive, qw( FILTER | IDENT ), $self->{AUTO_FILTER};
+        }
+
+        $token->[2] = [ map { @$_ } @directives ];
     }
-
     return $tokens;
 }
 
