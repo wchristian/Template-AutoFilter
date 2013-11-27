@@ -31,7 +31,7 @@ Revision history for Perl module {{$dist->name}}
     - slightly more efficient exclusion of directives in the parser
 
 0.110030  2011-01-03 01:16:21 Europe/Berlin
-    - better selection of directives to be filtered ( thanks to Tina Müller <tinita@cpan.org> )
+    - better selection of directives to be filtered ( thanks to Tina MÃ¼ller <tinita@cpan.org> )
 
 0.110020  2011-01-02 17:49:56 Europe/Berlin
     - initial release
