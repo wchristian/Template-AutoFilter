@@ -67,7 +67,6 @@ Ryan Olson (cpan:GIMPSON) <ryan@ziprecruiter.com>
 
 use base 'Template';
 
-use lib '..';
 use Template::AutoFilter::Parser;
 
 sub new {
