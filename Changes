@@ -1,6 +1,7 @@
 Revision history for Perl module {{$dist->name}}
 
 {{$NEXT}}
+    - removed 'use lib' which breaks some people (thanks to Aran Deltac <aran@ziprecruiter.com> )
 
 0.132690  2013-09-26 10:17:29 Europe/Berlin
     - comments or empty blocks are not autofiltered anymore ( thanks to Ryan Olson <ryan@ziprecruiter.com> )
