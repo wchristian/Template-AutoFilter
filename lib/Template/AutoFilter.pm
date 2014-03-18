@@ -63,6 +63,10 @@ new().
 
 Ryan Olson (cpan:GIMPSON) <ryan@ziprecruiter.com>
 
+Aran Deltac (cpan:BLUEFEET) <aran@ziprecruiter.com>
+
+Thomas Sibley (cpan:TSIBLEY) <tsibley@cpan.org>
+
 =cut
 
 use base 'Template';

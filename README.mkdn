@@ -4,7 +4,7 @@ Template::AutoFilter - Template::Toolkit with automatic filtering
 
 # VERSION
 
-version 0.132690
+version 0.140770
 
 # SYNOPSIS
 
@@ -38,7 +38,7 @@ Additionally a pass-through filter called 'none' is added to the object to
 allow exclusion of tokens from being filtered.
 
 Lastly, if you have problems with the directives which get auto filters
-applied, you can see the [Template::AutoFilter::Parser](http://search.cpan.org/perldoc?Template::AutoFilter::Parser) docs for how you
+applied, you can see the [Template::AutoFilter::Parser](https://metacpan.org/pod/Template::AutoFilter::Parser) docs for how you
 can customize that.
 
 WARNING: This module is highly experimental. I have not done a lot of
@@ -64,6 +64,8 @@ new().
 Ryan Olson (cpan:GIMPSON) <ryan@ziprecruiter.com>
 
 Aran Deltac (cpan:BLUEFEET) <aran@ziprecruiter.com>
+
+Thomas Sibley (cpan:TSIBLEY) <tsibley@cpan.org>
 
 # SUPPORT
 

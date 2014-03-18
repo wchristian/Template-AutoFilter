@@ -1,7 +1,8 @@
 Revision history for Perl module {{$dist->name}}
 
 {{$NEXT}}
-    - removed 'use lib' which breaks some people (thanks to Aran Deltac <aran@ziprecruiter.com> )
+    - removed 'use lib' which breaks some people ( thanks to Aran Deltac <aran@ziprecruiter.com> )
+    - skip interpolated text (ITEXT) sections which are not supported ( thanks to Thomas Sibley <tsibley@cpan.org> )
 
 0.132690  2013-09-26 10:17:29 Europe/Berlin
     - comments or empty blocks are not autofiltered anymore ( thanks to Ryan Olson <ryan@ziprecruiter.com> )
@@ -16,7 +17,7 @@ Revision history for Perl module {{$dist->name}}
     - load proper test module versions to get the abilities we want
 
 0.112070  2011-07-26 21:53:24 Europe/Berlin
-	- switched test IDE adaption to Test::InDistDir
+    - switched test IDE adaption to Test::InDistDir
 
 0.111980  2011-07-17 16:07:35 Europe/Berlin
     - nested fields do not cause warnings anymore
