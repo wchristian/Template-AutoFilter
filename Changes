@@ -1,6 +1,8 @@
 Revision history for Perl module {{$dist->name}}
 
 {{$NEXT}}
+
+0.140770  2014-03-18 10:49:54-07:00 America/Los_Angeles
     - removed 'use lib' which breaks some people ( thanks to Aran Deltac <aran@ziprecruiter.com> )
     - skip interpolated text (ITEXT) sections which are not supported ( thanks to Thomas Sibley <tsibley@cpan.org> )
 
