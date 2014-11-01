@@ -87,7 +87,22 @@ sub tests {(
         params  => {
             INTERPOLATE => 1,
         },
-    }
+    },
+    {
+        name    => 'split apart compound statements',
+        tmpl    => 'pre [% FOR foo IN ["<a>", "<b>", "&c"]; "<Element> $foo "; END %] post',
+        expect  => 'pre &lt;Element&gt; &lt;a&gt; &lt;Element&gt; &lt;b&gt; &lt;Element&gt; &amp;c  post',
+    },
+    {
+        name    => 'split apart compound statements',
+        tmpl    => 'pre [% FOR foo IN ["<a>", "<b>", "&c"]; "<Element> $foo " | none; END %] post',
+        expect  => 'pre <Element> <a> <Element> <b> <Element> &c  post',
+    },
+    {
+        name => 'tailing semi-colon parsed ok',
+        tmpl => '[% foo=test; %][% foo %]',
+        expect => '&lt;a&gt;',
+    },
 )}
 
 sub run_tests {
