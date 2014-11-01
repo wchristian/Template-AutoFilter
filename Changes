@@ -1,6 +1,8 @@
 Revision history for Perl module {{$dist->name}}
 
 {{$NEXT}}
+
+0.143050  2014-11-01 16:44:04+01:00 Europe/Berlin
     - apply auto-filtering to individual directives instead of an entire tag,
       i.e. [% IF foo; bar; ELSE; baz; END %]
 
