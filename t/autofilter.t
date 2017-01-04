@@ -1,3 +1,4 @@
+
 #!/usr/bin/perl
 
 use strict;
@@ -32,12 +33,12 @@ sub tests {(
     },
     {
         name => 'specifically filtered tokens get filtered',
-        tmpl => '[% test | html %]',
-        expect => '&lt;a&gt;',
+        tmpl => '[% "TEXT_LOWER" | lower %]',
+        expect => 'text_lower',
     },
     {
-        name => 'other filters are applied without the autofilter',
-        tmpl => '[% test | upper %]',
+        name => 'other filters are applied without the autofilter , when none filter used',
+        tmpl => '[% test | upper | none %]',
         expect => '<A>',
     },
     {
@@ -103,6 +104,20 @@ sub tests {(
         tmpl => '[% foo=test; %][% foo %]',
         expect => '&lt;a&gt;',
     },
+    {
+        name => 'Apply AutoFilter over an existing filter in template. Multifilters parsed ok',
+        tmpl => '[% "<script>alert(\"XSS\")</script>" | lower %]',
+        expect => '&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;',
+        params => { AUTO_FILTER => 'html' }
+    },
+    {
+        name => 'Don\'t Apply AutoFilter over an existing filter in template when none Filter used',
+        tmpl => '[% "<script>alert(\"XSS\")</script>" | lower | none %]',
+        expect => '<script>alert("xss")</script>',
+        params => { AUTO_FILTER => 'html' }
+    },
+
+
 )}
 
 sub run_tests {
