@@ -114,7 +114,13 @@ sub has_skip_field {
     my $skip_directives = $self->{SKIP_DIRECTIVES};
 
     for my $field ( keys %{$fields} ) {
-        return 1 if $skip_directives->{$field};
+        if (    ($skip_directives->{$field} and $field ne 'FILTER') 
+                    or 
+                (defined $fields->{IDENT}  and $fields->{IDENT} eq 'none')
+           )
+        {
+            return 1;
+        }
     }
 
     return 0;
