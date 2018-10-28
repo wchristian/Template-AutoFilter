@@ -48,7 +48,7 @@ excluded. Default value is:
 
     CALL SET DEFAULT INCLUDE PROCESS WRAPPER BLOCK IF UNLESS ELSIF ELSE
     END SWITCH CASE FOREACH FOR WHILE FILTER USE MACRO TRY CATCH FINAL
-    THROW NEXT LAST RETURN STOP CLEAR META TAGS DEBUG
+    THROW NEXT LAST RETURN STOP CLEAR META TAGS DEBUG PERL RAWPERL
 
 
 =head2 make_skip_directives
@@ -117,6 +117,8 @@ sub has_skip_field {
         return 1 if $skip_directives->{$field};
     }
 
+    return 1 if $fields->{ASSIGN} and $fields->{ASSIGN} eq '=';
+
     return 0;
 }
 
@@ -125,7 +127,7 @@ sub default_skip_directives {
     my @skip_directives = qw(
         CALL SET DEFAULT INCLUDE PROCESS WRAPPER BLOCK IF UNLESS ELSIF ELSE
         END SWITCH CASE FOREACH FOR WHILE FILTER USE MACRO TRY CATCH FINAL
-        THROW NEXT LAST RETURN STOP CLEAR META TAGS DEBUG ASSIGN PERL RAWPERL
+        THROW NEXT LAST RETURN STOP CLEAR META TAGS DEBUG PERL RAWPERL
     );
     return $self->make_skip_directives( \@skip_directives );
 }

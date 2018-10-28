@@ -103,6 +103,22 @@ sub tests {(
         tmpl => '[% foo=test; %][% foo %]',
         expect => '&lt;a&gt;',
     },
+    {
+        name => 'filtered hash as argument',
+        tmpl => '[%- USE Dumper( Indent = 0 ) -%][% Dumper.dump( hash ) %]',
+        values => { hash => { foo => '<a>' } },
+        expect => q{$VAR1 = {'foo' =&gt; '&lt;a&gt;'};},
+    },
+    {
+        name => 'filtered literal hash reference',
+        tmpl => '[%- USE Dumper( Indent = 0 ) -%][% Dumper.dump({ foo => "<a>" }) %]',
+        expect => q{$VAR1 = {'foo' =&gt; '&lt;a&gt;'};},
+    },
+    {
+        name => 'filtered literal hash',
+        tmpl => '[%- USE Dumper( Indent = 0 ) -%][% Dumper.dump( foo => "<a>" ) %]',
+        expect => q{$VAR1 = {'foo' =&gt; '&lt;a&gt;'};},
+    },
 )}
 
 sub run_tests {
@@ -118,8 +134,10 @@ sub run_test {
     $test->{params} ||= {};
 
     my $tt = Template::AutoFilter->new( $test->{params} );
+    my $values = $test->{values} // { test => '<a>' };
+
     my $out;
-    my $res = $tt->process( \$test->{tmpl}, { test => '<a>' }, \$out );
+    my $res = $tt->process( \$test->{tmpl}, $values, \$out );
 
     subtest $test->{name} => sub {
         cmp_deeply( [ $tt->error."", $res ], [ '', 1 ], 'no template errors' );
